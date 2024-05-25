@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop Design</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <style>
+        .cart-receipt {
+            position: absolute;
+            right: 10px;
+            top: 70px;
+            width: 300px;
+            background: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 10px;
+            display: none;
+            z-index: 1000;
+        }
+
+        .cart-receipt h3 {
+            margin: 0;
+        }
+
+        .cart-receipt ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+
+        .cart-receipt ul li {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .cart-receipt ul li:last-child {
+            border-bottom: none;
+        }
+
+        .cart-receipt .cart-total {
+            font-weight: bold;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #f8f8f8;
+        }
+
+        .social-icons {
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+            color: #333;
+            font-size: 24px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">
+            <img src="logo-removebg-preview.png" alt="Logo">
+        </a>
+        <i class='bx bx-menu' id="menu-icon"></i>
+        <ul class="navbar">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#customers">Customers</a></li>
+        </ul>
+        <div class="header-icon">
+            <i class='bx bx-cart-alt' id="cart-icon"></i>
+            <i class='bx bx-search' id="search-icon"></i>
+        </div>
+        <div class="search-box">
+            <input type="search" placeholder="Search Here">
+        </div>
+        <div class="cart-receipt" id="cart-receipt">
+            <h3>Receipt</h3>
+            <ul id="cart-items">
+                <!-- Cart items will be appended here -->
+            </ul>
+            <h3>Total: $<span id="cart-total">0.00</span></h3>
+        </div>
+    </header>
+
+    <section class="home" id="home">
+        <div class="home-text">
+            <h1>Hernando<br> Jeshua Nio L.</h1>
+            <p>Indulge in the epitome of luxury with our exquisite coffee blend. 
+            Crafted from the finest beans, each sip is a symphony of rich flavors and aromatic notes, delivering a taste experience that transcends the ordinary.</p>
+            <a href="#" class="btn">BSIT 104</a>
+        </div>
+        <div class="home-img">
+            <img src="2nd home.jpeg" alt="Home Image">
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-img">
+            <img src="2nd home.jpeg" alt="About Image">
+        </div>
+        <div class="about-text">
+            <h2>Hernando's Coffee History</h2>
+            <p>The history of Hernando's Luxurious Coffee is a captivating tale that begins with a passion for excellence in coffee craftsmanship. In the early 2000s, a group of visionary coffee 
+                enthusiasts embarked on a quest to redefine the coffee experience, aiming to elevate it to a level of luxury and sophistication.</p>
+            <p>premium Arabica beans, and elegant packaging. It stands as a symbol of refined indulgence for conscious coffee enthusiasts globally.</p>
+            <a href="#" class="btn">Learn More</a>
+        </div>
+    </section>
+
+    <section class="products" id="products">
+        <div class="heading">
+            <h2>Our Best Sellers</h2>
+        </div>
+        <div class="products-container">
+            <div class="box">
+                <img src="cart-item 1.jpeg" alt="Coffee Amihan">
+                <h3>Coffee Amihan</h3>
+                <div class="content">
+                    <span>$10</span>
+                    <button class="add-to-cart" data-price="10" data-name="Coffee Amihan">Add to cart</button>
+                </div>
+            </div>
+            <div class="box">
+                <img src="cart-item 2.jpeg" alt="Irish Coffee">
+                <h3>Irish Coffee</h3>
+                <div class="content">
+                    <span>$7</span>
+                    <button class="add-to-cart" data-price="7" data-name="Irish Coffee">Add to cart</button>
+                </div>
+            </div>
+            <div class="box">
+                <img src="cart-item 3.jpeg" alt="Espresso Laccion">
+                <h3>Espresso Laccion</h3>
+                <div class="content">
+                    <span>$9</span>
+                    <button class="add-to-cart" data-price="9" data-name="Espresso Laccion">Add to cart</button>
+                </div>
+            </div>
+            <div class="box">
+                <img src="cart-item 4.jpeg" alt="Marroccino">
+                <h3>Marroccino</h3>
+                <div class="content">
+                    <span>$6</span>
+                    <button class="add-to-cart" data-price="6" data-name="Marroccino">Add to cart</button>
+                </div>
+            </div>
+            <div class="box">
+                <img src="cart-item 5.jpeg" alt="Con Panna Coffee">
+                <h3>Con Panna Coffee</h3>
+                <div class="content">
+                    <span>$9</span>
+                    <button class="add-to-cart" data-price="9" data-name="Con Panna Coffee">Add to cart</button>
+                </div>
+            </div>
+            <div class="box">
+                <img src="cart-item 6.jpeg" alt="Corretto Coffee">
+                <h3>Corretto Coffee</h3>
+                <div class="content">
+                    <span>$8</span>
+                    <button class="add-to-cart" data-price="8" data-name="Corretto Coffee">Add to cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="customers" id="customers">
+        <div class="heading">
+            <h2>Our Customers</h2>
+        </div>
+        <div class="customers-container">
+            <div class="box">
+                <div class="stars">
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star-half'></i>
+                </div>
+                <p>"Fantastic coffee experience! Rich flavor, perfect roast. Great service too. Will be back for more!"</p>
+                <h2>Hera</h2>
+                <img src="customer 1.jpeg" alt="Customer 1">
+            </div>
+            <div class="box">
+                <div class="stars">
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star-half'></i>
+                </div>
+                <p>"Fantastic coffee experience! Rich flavor, perfect roast. Great service too. Will be back for more!"</p>
+                <h2>Zeus</h2>
+                <img src="customer 2.jpeg" alt="Customer 2">
+            </div>
+            <div class="box">
+                <div class="stars">
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star-half'></i>
+                </div>
+                <p>"Fantastic coffee experience! Rich flavor, perfect roast. Great service too. Will be back for more!"</p>
+                <h2>Uno</h2>
+                <img src="customer 3.jpeg" alt="Customer 3">
+            </div>
+        </div>
+    </section>
+
+    <section class="footer">
+        <div class="footer-box">
+            <h2>Hernando's Coffee Shop</h2>
+        </div>
+        <div class="social-icons">
+            <a href="https://www.facebook.com" target="_blank"><i class='bx bxl-facebook'></i></a>
+            <a href="https://www.twitter.com" target="_blank"><i class='bx bxl-twitter'></i></a>
+            <a href="https://www.instagram.com" target="_blank"><i class='bx bxl-instagram'></i></a>
+            <a href="https://www.linkedin.com" target="_blank"><i class='bx bxl-linkedin'></i></a>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
